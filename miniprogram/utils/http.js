@@ -10,6 +10,16 @@ http.intercept.request = r => {
     token
   } = getApp()
   console.log(token);
+
+  let defaultHeaders = {}
+  if (token) defaultHeaders.Authorization = `Bearer ${token}`
+
+  // 浅拷贝header
+  defaultHeaders = Object.assign(defaultHeaders, r.header)
+
+  r.header = defaultHeaders
+
+
   return r
 }
 
