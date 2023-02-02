@@ -1,12 +1,17 @@
 import {
-  getLoginCode
+  getLoginCode,
+  login
 } from "../../api/login"
+import {
+  setUserToken
+} from "../../utils/storage"
 
 // const secret_code = ''
 Page({
   data: {
     countDownVisible: false,
-    mobile: '',
+    mobile: '13811111111',
+    code: ''
   },
 
   onLoad(options) {
@@ -42,6 +47,33 @@ Page({
       }
     })
 
+  },
+  async handleLogin(e) {
+    // 逐个验证表单数据
+    if (!this.verifyMobile()) return
+    if (!this.verifyCode()) return
+
+    const obj = {
+      mobile: this.data.mobile,
+      code: this.data.code
+    }
+    const {
+      data
+    } = await login(obj)
+
+    setUserToken(data)
+
+  },
+  // 验证验证码
+  verifyCode() {
+    // 验证码为6位数字
+    const reg = /^\d{6}$/
+    // 验证验证码
+    const valid = reg.test(this.data.code.trim())
+    // 验证结果提示
+    if (!valid) wx.utils.toast('请检查验证码是否正确!')
+    // 返回验证结果
+    return valid
   },
   // 验证手机号格式
   verifyMobile() {

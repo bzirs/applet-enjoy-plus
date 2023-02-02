@@ -1,4 +1,6 @@
-import { getNotices } from "../../api/notices"
+import {
+  getNotices
+} from "../../api/notices"
 
 Page({
   data: {
