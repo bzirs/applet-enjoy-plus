@@ -1,11 +1,10 @@
-const TOKEN = 'enjoy_plus_tokens'
 
 /**
  * @description 存储token
  * @param {*} data 
  */
-export const setUserToken = data => wx.setStorage({
-  key: TOKEN,
+export const setUserToken = (data,key) => wx.setStorage({
+  key,
   data
 })
 
@@ -13,7 +12,4 @@ export const setUserToken = data => wx.setStorage({
  * @description 获取token
  * @param {*} _ 
  */
-export const getUserToken = _ => wx.getStorage({
-  key: TOKEN,
-
-})
+export const getUserToken = (key) => wx.getStorage({key})

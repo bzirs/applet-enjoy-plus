@@ -54,27 +54,39 @@ Page({
 
   },
   async handleLogin(e) {
-    // 逐个验证表单数据
-    if (!this.verifyMobile()) return
-    if (!this.verifyCode()) return
+    try {
+      // 逐个验证表单数据
+      if (!this.verifyMobile()) return
+      if (!this.verifyCode()) return
 
-    const obj = {
-      mobile: this.data.mobile,
-      code: this.data.code
+      const obj = {
+        mobile: this.data.mobile,
+        code: this.data.code
+      }
+      const loginResult = await login(obj)
+
+      if (loginResult.code !== 10000) return wx.utils.toast(loginResult.message)
+
+      const {
+        data: {
+          token,
+          refreshToken
+        }
+      } = loginResult
+
+      setUserToken(token, 'enjoy_plus_token')
+      setUserToken(refreshToken, 'enjoy_plus_refreshToken')
+
+      app.token = token
+
+      // console.log(this.data.redirectPath);
+
+      wx.redirectTo({
+        url: this.data.redirectPath,
+      })
+    } catch (error) {
+      console.dir(error);
     }
-    const {
-      data
-    } = await login(obj)
-
-    setUserToken(data)
-
-    app.token = data
-
-    console.log(this.data.redirectPath);
-
-    wx.redirectTo({
-      url: this.data.redirectPath,
-    })
 
   },
   // 验证验证码

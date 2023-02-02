@@ -20,7 +20,7 @@ App({
         data: {
           token
         }
-      } = await getUserToken()
+      } = await getUserToken('enjoy_plus_token')
 
       this.token = token
     } catch (e) {
