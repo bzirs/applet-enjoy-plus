@@ -9,6 +9,7 @@ import {
 
 App({
   token: null,
+  refreshToken: null,
   globalData: {},
   onLaunch() {
     this.getToken()
@@ -17,12 +18,15 @@ App({
   async getToken() {
     try {
       const {
-        data: {
-          token
-        }
+        data: token
       } = await getUserToken('enjoy_plus_token')
 
+      const {
+        data: refreshToken
+      } = await getUserToken('enjoy_plus_refreshToken')
+
       this.token = token
+      this.refreshToken = refreshToken
     } catch (e) {
       console.log(e);
     }

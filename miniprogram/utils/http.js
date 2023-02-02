@@ -4,6 +4,8 @@ http.baseURL = 'https://live-api.itheima.net'
 
 wx.http = http
 
+
+
 // 请求拦截
 http.intercept.request = r => {
   const {
@@ -25,6 +27,9 @@ http.intercept.request = r => {
 
 // 响应拦截
 http.intercept.response = r => {
+  const app = getApp()
+  console.log(app.refreshToken);
+  
   return r.data
 }
 
