@@ -1,0 +1,4 @@
+<!--components/auth/auth.wxml-->
+<view wx:if="{{isLogin}}">
+  <slot></slot>
+</view>

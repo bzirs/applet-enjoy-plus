@@ -3,6 +3,10 @@ Page({
     countDownVisible: true,
   },
 
+  onLoad(options) {
+    console.log(options.redirect);
+  },
+
   countDownChange(ev) {
     this.setData({
       timeData: ev.detail,

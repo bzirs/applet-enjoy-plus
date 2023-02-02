@@ -18,8 +18,7 @@
     "borderStyle": "white",
     "color": "#8e8e92",
     "selectedColor": "#5591af",
-    "list": [
-      {
+    "list": [{
         "text": "首页",
         "pagePath": "pages/index/index",
         "iconPath": "static/tabs/home_default.png",
@@ -50,10 +49,12 @@
     "van-uploader": "@vant/weapp/uploader/index",
     "van-popup": "@vant/weapp/popup/index",
     "van-action-sheet": "@vant/weapp/action-sheet/index",
-    "van-count-down": "@vant/weapp/count-down/index"
+    "van-count-down": "@vant/weapp/count-down/index",
+    "auth": "./components/auth/auth",
+    "van-overlay": "@vant/weapp/overlay/index",
+    "van-skeleton": "@vant/weapp/skeleton/index"
   },
-  "subPackages": [
-    {
+  "subPackages": [{
       "root": "house_pkg",
       "pages": [
         "pages/list/index",
