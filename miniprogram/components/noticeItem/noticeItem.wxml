@@ -1,0 +1,5 @@
+<navigator hover-class="none" url="/pages/notify/index?id={{obj.id}}" class="notice">
+  <view class="notice-title">{{obj.title}}</view>
+  <view class="notice-brief">{{obj.content}}</view>
+  <view class="notice-date">{{obj.createdAt}}</view>
+</navigator>

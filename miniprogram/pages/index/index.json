@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "noticeItem": "../../components/noticeItem/noticeItem"
+  },
   "navigationBarBackgroundColor": "#d2dde8"
 }

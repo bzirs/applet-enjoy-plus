@@ -1,3 +1,7 @@
+import {
+  getNoticeDetial
+} from "../../api/notices";
+
 // pages/notify/index.ts
 Page({
 
@@ -5,14 +9,25 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    detail: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad() {
+  onLoad(options) {
+    console.log(options.id);
+    this.loadNoticeDetial(options.id)
+  },
 
+  async loadNoticeDetial(id) {
+    const {
+      data
+    } = await getNoticeDetial(id)
+
+    this.setData({
+      detail: data
+    })
   },
 
   /**

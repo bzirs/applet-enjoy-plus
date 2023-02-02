@@ -61,36 +61,4 @@ page {
       color: #e2973e;
     }
   }
-
-  .notice {
-    padding: 30rpx;
-    margin-top: 20rpx;
-    border-radius: 16rpx;
-    background-color: #fff;
-  }
-
-  .notice-title {
-    font-size: 32rpx;
-    font-weight: 500;
-  }
-
-  .notice-brief {
-    height: 125rpx;
-    line-height: 1.5;
-    margin: 20rpx 0 30rpx;
-    font-size: 28rpx;
-    color: #686868;
-
-    // 多行文本溢出处理
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-  }
-
-  .notice-date {
-    font-size: 24rpx;
-    color: #bdbdbd;
-  }
 }
