@@ -15,13 +15,16 @@ App({
   },
   // 获取本地token
   async getToken() {
+    try {
+      const {
+        data: {
+          token
+        }
+      } = await getUserToken()
 
-    const {
-      data: {
-        token
-      }
-    } = await getUserToken()
-
-    this.token = token
+      this.token = token
+    } catch (e) {
+      console.log(e);
+    }
   }
 })

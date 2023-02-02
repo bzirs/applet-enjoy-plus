@@ -14,5 +14,6 @@ export const setUserToken = data => wx.setStorage({
  * @param {*} _ 
  */
 export const getUserToken = _ => wx.getStorage({
-  key: TOKEN
+  key: TOKEN,
+
 })

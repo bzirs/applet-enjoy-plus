@@ -23,6 +23,7 @@ Component({
   },
   lifetimes: {
     attached() {
+      console.log('钩子调用', app.token);
       const pages = getCurrentPages()
       const page = pages[pages.length - 1].route
 

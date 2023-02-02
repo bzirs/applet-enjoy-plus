@@ -5,17 +5,22 @@ import {
 import {
   setUserToken
 } from "../../utils/storage"
-
+const app = getApp()
 // const secret_code = ''
 Page({
   data: {
     countDownVisible: false,
     mobile: '13811111111',
-    code: ''
+    code: '',
+
+    redirectPath: ''
   },
 
   onLoad(options) {
     console.log(options.redirect)
+    this.setData({
+      redirectPath: options.redirect
+    })
   },
   async handleGetCode() {
     // 表单验证 发送获取验证码请求
@@ -62,6 +67,14 @@ Page({
     } = await login(obj)
 
     setUserToken(data)
+
+    app.token = data
+
+    console.log(this.data.redirectPath);
+
+    wx.redirectTo({
+      url: this.data.redirectPath,
+    })
 
   },
   // 验证验证码
