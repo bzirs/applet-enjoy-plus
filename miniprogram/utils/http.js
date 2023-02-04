@@ -8,7 +8,7 @@ wx.http = http
 // 请求拦截
 http.intercept.request = (r) => {
   const { token } = getApp()
-  console.log(token)
+  // console.log(token)
 
   let defaultHeaders = {}
   if (token) defaultHeaders.Authorization = `Bearer ${token}`
@@ -52,7 +52,7 @@ http.intercept.response = async (r) => {
       },
     })
 
-    console.log(res.data)
+    // console.log(res.data)
 
     if (res.data) {
       const {

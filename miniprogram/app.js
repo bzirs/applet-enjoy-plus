@@ -3,11 +3,10 @@
 import './utils/utils'
 
 import './utils/http'
-import {
-  getUserToken
-} from './utils/storage'
+import { getUserToken } from './utils/storage'
 
 App({
+  userInfo: {},
   token: null,
   refreshToken: null,
   globalData: {},
@@ -17,18 +16,15 @@ App({
   // 获取本地token
   async getToken() {
     try {
-      const {
-        data: token
-      } = await getUserToken('enjoy_plus_token')
+      const { data: token } = await getUserToken('enjoy_plus_token')
 
-      const {
-        data: refreshToken
-      } = await getUserToken('enjoy_plus_refreshToken')
+      const { data: refreshToken } = await getUserToken('enjoy_plus_refreshToken')
 
       this.token = token
       this.refreshToken = refreshToken
+      console.log('app.js')
     } catch (e) {
-      console.log(e);
+      console.log(e)
     }
-  }
+  },
 })

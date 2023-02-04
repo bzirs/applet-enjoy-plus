@@ -1,14 +1,27 @@
-import {
-  getUserInfo
-} from "../../api/user"
-
+import { getUserInfo } from '../../api/user'
+const app = getApp()
 Page({
+  data: {
+    userInfo: {},
+  },
   onLoad() {
     this.loadUserInfo()
   },
+  onShow() {
+    console.log(app.userInfo)
+    this.setData({
+      userInfo: app.userInfo,
+    })
+  },
   async loadUserInfo() {
-    const res = await getUserInfo()
-    console.log(res);
+    const { data } = await getUserInfo()
+
+    app.userInfo = data
+    console.log(app.userInfo)
+
+    this.setData({
+      userInfo: data,
+    })
   },
   goLogin() {
     wx.navigateTo({

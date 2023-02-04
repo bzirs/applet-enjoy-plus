@@ -1,10 +1,5 @@
-import {
-  getLoginCode,
-  login
-} from "../../api/login"
-import {
-  setUserToken
-} from "../../utils/storage"
+import { getLoginCode, login } from '../../api/login'
+import { setUserToken } from '../../utils/storage'
 const app = getApp()
 // const secret_code = ''
 Page({
@@ -13,13 +8,13 @@ Page({
     mobile: '13811111111',
     code: '',
 
-    redirectPath: ''
+    redirectPath: '',
   },
 
   onLoad(options) {
     console.log(options.redirect)
     this.setData({
-      redirectPath: options.redirect
+      redirectPath: options.redirect,
     })
   },
   async handleGetCode() {
@@ -28,11 +23,9 @@ Page({
 
     const {
       code: stateCode,
-      data: {
-        code
-      }
+      data: { code },
     } = await getLoginCode({
-      mobile: this.data.mobile
+      mobile: this.data.mobile,
     })
 
     if (stateCode !== 10000) return wx.utils.toast('发送失败, 请稍后重试!')
@@ -40,18 +33,17 @@ Page({
     wx.utils.toast('验证码发送成功,请注意查收!')
 
     this.setData({
-      countDownVisible: true
+      countDownVisible: true,
     })
 
     // secret_code = code
 
     wx.setClipboardData({
       data: code,
-      success: e => {
-        console.log(e);
-      }
+      success: (e) => {
+        console.log(e)
+      },
     })
-
   },
   async handleLogin(e) {
     try {
@@ -61,17 +53,14 @@ Page({
 
       const obj = {
         mobile: this.data.mobile,
-        code: this.data.code
+        code: this.data.code,
       }
       const loginResult = await login(obj)
 
       if (loginResult.code !== 10000) return wx.utils.toast(loginResult.message)
 
       const {
-        data: {
-          token,
-          refreshToken
-        }
+        data: { token, refreshToken },
       } = loginResult
 
       setUserToken(token, 'enjoy_plus_token')
@@ -82,12 +71,11 @@ Page({
       // console.log(this.data.redirectPath);
 
       wx.redirectTo({
-        url: this.data.redirectPath,
+        url: this.data.redirectPath || '/pages/index/index',
       })
     } catch (error) {
-      console.dir(error);
+      console.dir(error)
     }
-
   },
   // 验证验证码
   verifyCode() {
