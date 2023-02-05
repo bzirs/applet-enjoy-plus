@@ -5,7 +5,7 @@ const app = getApp()
 Page({
   data: {
     countDownVisible: false,
-    mobile: '13811111111',
+    mobile: '17660720660',
     code: '',
 
     redirectPath: '',

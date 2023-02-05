@@ -15,16 +15,12 @@ App({
   },
   // 获取本地token
   async getToken() {
-    try {
-      const { data: token } = await getUserToken('enjoy_plus_token')
+    console.log('调用了app')
+    const { data: token } = await getUserToken('enjoy_plus_token')
+    const { data: refreshToken } = await getUserToken('enjoy_plus_refreshToken')
 
-      const { data: refreshToken } = await getUserToken('enjoy_plus_refreshToken')
-
-      this.token = token
-      this.refreshToken = refreshToken
-      console.log('app.js')
-    } catch (e) {
-      console.log(e)
-    }
+    this.token = token
+    this.refreshToken = refreshToken
+    console.log('app.js')
   },
 })
